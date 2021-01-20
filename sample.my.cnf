@@ -1,0 +1,7 @@
+# Rename and move to ~/.my.cnf and upgrade with proper credentials
+# chmod 600 ~/.my.cnf afterwards
+
+[mysqldump]
+user=dbusername
+password=somepassword
+
