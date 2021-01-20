@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+########################
+# Backup database
+########################
+
+# Read config
+conf=$(cat www/configuration.php);
+
+db=$(echo "$conf;"'$c=new JConfig();echo $c->db;'";"|php)
+user=$(echo "$conf;"'$c=new JConfig();echo $c->user;'";"|php)
+mkdir -p backup
+mysqldump -u $user -h localhost --no-tablespaces  $db |gzip - >backup/backup_$(date +%F).sql.gz
+
